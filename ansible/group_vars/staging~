@@ -1,0 +1,46 @@
+mysql_root_password: stagingpw
+
+wordpress_sites:
+  2p0.com:
+    site_hosts:
+      - 45.55.226.86
+    #  - staging.2p0.com   after setting up domain name
+    local_path: ../site # path targeting local Bedrock site directory (relative to Ansible root)
+    #repo: git@github.com:roots/bedrock.git
+    repo: git@github.com:ck1981/2p0.git
+    branch: master
+    #subtree: site # Use this if following the roots-example-project structure
+    multisite:
+      enabled: false
+      subdomains: false
+    ssl:
+      enabled: false
+    cache:
+      enabled: false
+      duration: 30s
+    system_cron: true
+    env:
+      wp_home: 45.55.226.86
+      wp_siteurl: 45.55.226.86
+      #wp_siteurl: 45.55.226.86/wp    #may need to remove the /wp as per https://discourse.roots.io/t/bedrock-ansible-staging-production-wordpress-install-not-in-publicly-viewable-directory/2797/2?
+      #wp_home: http://staging.2p0.com    after setting up domain name
+      #wp_siteurl: http://staging.2p0.com/wp      after setting up domain name
+      wp_env: staging
+      db_name: 2p0_staging
+      db_user: 2p0_dbuser
+      db_password: 2p0_dbpassword
+      # Generate your keys here: https://api.wordpress.org/secret-key/1.1/salt/
+      auth_key: "generateme"
+      auth_salt: "generateme"
+      logged_in_key: "generateme"
+      logged_in_salt: "generateme"
+      nonce_key: "generateme"
+      nonce_salt: "generateme"
+      secure_auth_key: "generateme"
+      secure_auth_salt: "generateme"
+php_error_reporting: 'E_ALL'
+php_display_errors: 'On'
+php_display_startup_errors: 'On'
+php_track_errors: 'On'
+php_mysqlnd_collect_memory_statistics: 'On'
+php_opcache_enable: 0
