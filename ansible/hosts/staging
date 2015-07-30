@@ -1,5 +1,6 @@
 [web]
-45.55.226.86
+#45.55.226.86  this was for the droplet that got hacked which I had to destroy
+104.236.53.219
 
 [staging:children]
 web
